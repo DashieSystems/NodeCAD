@@ -13,10 +13,11 @@ const userInViews = require('./lib/middleware/userInViews');
 const authRouter = require('./routes/auth');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const emsRouter = require('./routes/ems');
 
 const app = express();
 
-var strategy = new Auth0Strategy(
+const strategy = new Auth0Strategy(
   {
     domain: config.get('auth_domain'),
     clientID: config.get('auth_id'),
@@ -28,7 +29,7 @@ var strategy = new Auth0Strategy(
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
     // profile has all the information from the user
-    return done(null, profile);
+    return done(null, { accessToken, profile});
   }
 );
 
@@ -65,6 +66,7 @@ app.use(userInViews());
 app.use('/', authRouter);
 app.use('/', indexRouter);
 app.use('/', usersRouter);
+app.use('/', emsRouter);
 
 passport.serializeUser(function (user, done) {
   done(null, user);
