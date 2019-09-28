@@ -8,10 +8,9 @@ const util = require('util');
 const url = require('url');
 const querystring = require('querystring');
 
-
 // Perform the login, after login Auth0 will redirect to callback
 router.get('/login', passport.authenticate('auth0', {
-  scope: 'openid email profile'
+  scope: 'openid email profile app_metadata police'
 }), function (req, res) {
   res.redirect('/');
 });
@@ -34,7 +33,7 @@ router.get('/callback', function (req, res, next) {
 router.get('/logout', (req, res) => {
   req.logout();
 
-  const returnTo = req.protocol + '://' + req.hostname;
+  var returnTo = req.protocol + '://' + req.hostname;
   const port = req.connection.localPort;
   if (port !== undefined && port !== 80 && port !== 443) {
     returnTo += ':' + port;

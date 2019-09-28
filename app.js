@@ -13,10 +13,15 @@ const userInViews = require('./lib/middleware/userInViews');
 const authRouter = require('./routes/auth');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const emsRouter = require('./routes/ems');
+const policeRouter = require('./routes/police');
+const fireRouter = require('./routes/fire');
+const dispatchRouter = require('./routes/dispatch');
+const timesheetRouter = require('./routes/timesheet');
 
 const app = express();
 
-var strategy = new Auth0Strategy(
+const strategy = new Auth0Strategy(
   {
     domain: config.get('auth_domain'),
     clientID: config.get('auth_id'),
@@ -28,7 +33,7 @@ var strategy = new Auth0Strategy(
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
     // profile has all the information from the user
-    return done(null, profile);
+    return done(null, { accessToken, profile});
   }
 );
 
@@ -48,8 +53,9 @@ if (app.get('env') === 'production') {
   sess.cookie.secure = true; // serve secure cookies, requires https
 }
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(__dirname + '/public'));
 
 
 app.use(session(sess));
@@ -59,12 +65,16 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(userInViews());
 app.use('/', authRouter);
 app.use('/', indexRouter);
 app.use('/', usersRouter);
+app.use('/', emsRouter);
+app.use('/', policeRouter);
+app.use('/', dispatchRouter);
+app.use('/', fireRouter);
+app.use('/', timesheetRouter);
 
 passport.serializeUser(function (user, done) {
   done(null, user);

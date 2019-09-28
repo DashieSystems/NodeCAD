@@ -9,15 +9,15 @@ const config = convict ({
     env: 'NODE_ENV'
   },
   auth_id: {
-    doc: 'ALasVGn642CxICoW7rOSojAgoveIBwFo',
+    doc: 'Auth0 Client ID',
     format: String,
-    default: 'ALasVGn642CxICoW7rOSojAgoveIBwFo',
+    default: 'Q549C637469d2TTnGUBSFoxZsSFUziz5',
     env: 'AUTH0_CLIENT_ID'
   },
   auth_secret:{
     doc: 'Auth0 tenant secret key',
     format: String,
-    default: 'VHmnVj880Wu-jUIwKQgyq9Xq-UhTlRaG9xubVs-ub2-NWd_NfVKnNtdKtInTQafJ',
+    default: '2oGaOYx6d4zC7j3NjQQ7igVsCEMFWhNuhSEwVPtLpPYS2vnyY8z6VMGKghL8BHu9',
     env: 'AUTH0_CLIENT_SECRET'
   },
   auth_domain: {
