@@ -10,7 +10,7 @@ const querystring = require('querystring');
 
 // Perform the login, after login Auth0 will redirect to callback
 router.get('/login', passport.authenticate('auth0', {
-  scope: 'openid email profile'
+  scope: 'openid email profile app_metadata police'
 }), function (req, res) {
   res.redirect('/');
 });

@@ -5,16 +5,15 @@ const roleLink = 'http://mydl.city/app_metadata';
 
 /* GET home page. */
 /* GET user profile. */
-router.get('/ems', secured(), function (req, res, next) {
+router.get('/police', secured(), function (req, res, next) {
   const { _raw, _json, ...userProfile } = req.user;
   if (userProfile){
-    if (userProfile.profile._json[roleLink].ems === true){
-      return res.render('ems', {userContent: 'You are EMS', title: 'NodeCAD | EMS MDT'});
+    if (userProfile.profile._json[roleLink].police === true){
+      return res.render('police', {userContent: 'You are Police', title: 'NodeCAD | Police MDT'});
     }else{
-      return res.send(403,{
-        'status': 403,
+      return res.status(403).send({
         'code': 1,
-        'message': 'You are not EMS!',
+        'message': 'You are not police!',
         'moreInfo': 'https://discord.mydl.city'
       });
     }
@@ -27,6 +26,5 @@ router.get('/ems', secured(), function (req, res, next) {
     });
   }
 });
-
 
 module.exports = router;

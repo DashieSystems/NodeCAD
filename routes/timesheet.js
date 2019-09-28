@@ -5,16 +5,16 @@ const roleLink = 'http://mydl.city/app_metadata';
 
 /* GET home page. */
 /* GET user profile. */
-router.get('/ems', secured(), function (req, res, next) {
+router.get('/timesheet', secured(), function (req, res, next) {
   const { _raw, _json, ...userProfile } = req.user;
   if (userProfile){
-    if (userProfile.profile._json[roleLink].ems === true){
-      return res.render('ems', {userContent: 'You are EMS', title: 'NodeCAD | EMS MDT'});
+    if (userProfile.profile._json[roleLink].timesheet === true){
+      return res.render('timesheet', {userContent: 'You are allowed to view the timesheet', title: 'NodeCAD | Timesheet'});
     }else{
       return res.send(403,{
         'status': 403,
         'code': 1,
-        'message': 'You are not EMS!',
+        'message': 'You are not authorized!',
         'moreInfo': 'https://discord.mydl.city'
       });
     }

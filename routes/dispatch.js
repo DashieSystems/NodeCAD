@@ -5,16 +5,15 @@ const roleLink = 'http://mydl.city/app_metadata';
 
 /* GET home page. */
 /* GET user profile. */
-router.get('/ems', secured(), function (req, res, next) {
+router.get('/dispatch', secured(), function (req, res, next) {
   const { _raw, _json, ...userProfile } = req.user;
   if (userProfile){
-    if (userProfile.profile._json[roleLink].ems === true){
-      return res.render('ems', {userContent: 'You are EMS', title: 'NodeCAD | EMS MDT'});
+    if (userProfile.profile._json[roleLink].dispatch === true){
+      return res.render('dispatch', {userContent: 'You are Dispatch', title: 'NodeCAD | Dispatch Console'});
     }else{
-      return res.send(403,{
-        'status': 403,
+      return res.status(403).send({
         'code': 1,
-        'message': 'You are not EMS!',
+        'message': 'You are not dispatch!',
         'moreInfo': 'https://discord.mydl.city'
       });
     }
@@ -22,7 +21,7 @@ router.get('/ems', secured(), function (req, res, next) {
     return res.send(401,{
       'status': 401,
       'code': 2,
-      'message': 'You are not authenticated',
+      'message': 'You are not authenticated!',
       'moreInfo': 'https://discord.mydl.city'      
     });
   }
