@@ -1,5 +1,5 @@
 # NodeCAD
-[![Known Vulnerabilities](https://snyk.io/test/github/DashieSystems/NodeCAD/badge.svg)](https://snyk.io/test/github/DashieSystems/NodeCAD)
+[![Known Vulnerabilities](https://snyk.io/test/github/DashieSystems/NodeCAD/badge.svg?style=plastic)](https://snyk.io/test/github/DashieSystems/NodeCAD)
 [![Actions Status](https://github.com/DashieSystems/NodeCAD/workflows/Node_CI/badge.svg)](https://github.com/DashieSystems/NodeCAD/actions)
 ![Discord](https://img.shields.io/discord/603977103414919199)
 ![GitHub issues](https://img.shields.io/github/issues/DashieSystems/NodeCAD)
