@@ -23,7 +23,7 @@ router.get('/fire', secured(), function (req, res, next) {
       'status': 401,
       'code': 2,
       'message': 'You are not authenticated!',
-      'moreInfo': 'https://discord.mydl.city'      
+      'moreInfo': 'https://discord.mydl.city'
     });
   }
 });
