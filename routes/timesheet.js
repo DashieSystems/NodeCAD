@@ -11,16 +11,14 @@ router.get('/timesheet', secured(), function (req, res, next) {
     if (userProfile.profile._json[roleLink].timesheet === true){
       return res.render('timesheet', {userContent: 'You are allowed to view the timesheet', title: 'NodeCAD | Timesheet'});
     }else{
-      return res.send(403,{
-        'status': 403,
+      return res.status(403).send({
         'code': 1,
-        'message': 'You are not authorized!',
+        'message': 'You are not allowed here!',
         'moreInfo': 'https://discord.mydl.city'
       });
     }
   }else{
-    return res.send(401,{
-      'status': 401,
+    return res.status(401).send({
       'code': 2,
       'message': 'You are not authenticated',
       'moreInfo': 'https://discord.mydl.city'      

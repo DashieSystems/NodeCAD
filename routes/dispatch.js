@@ -18,10 +18,9 @@ router.get('/dispatch', secured(), function (req, res, next) {
       });
     }
   }else{
-    return res.send(401,{
-      'status': 401,
+    return res.status(401).send({
       'code': 2,
-      'message': 'You are not authenticated!',
+      'message': 'You are not authenticated',
       'moreInfo': 'https://discord.mydl.city'      
     });
   }

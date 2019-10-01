@@ -18,8 +18,29 @@ const policeRouter = require('./routes/police');
 const fireRouter = require('./routes/fire');
 const dispatchRouter = require('./routes/dispatch');
 const timesheetRouter = require('./routes/timesheet');
-
 const app = express();
+const jwt = require('express-jwt');
+const jwtAuthz = require('express-jwt-authz');
+const jwksRsa = require('jwks-rsa');
+
+// Authentication middleware. When used, the
+// Access Token must exist and be verified against
+// the Auth0 JSON Web Key Set
+const checkJwt = jwt({
+  // Dynamically provide a signing key
+  // based on the kid in the header and 
+  // the signing keys provided by the JWKS endpoint.
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: config.get('jwksUri')
+  }),
+    // Validate the audience and the issuer.
+    audience: config.get('auth0Audience'),
+    issuer: config.get('auth0Issuer'),
+    algorithms: ['RS256']
+  });
 
 const strategy = new Auth0Strategy(
   {
@@ -75,6 +96,12 @@ app.use('/', policeRouter);
 app.use('/', dispatchRouter);
 app.use('/', fireRouter);
 app.use('/', timesheetRouter);
+
+app.get('/api/private', checkJwt, function(req, res) {
+  res.json({
+    message: 'Hello from a private endpoint! You need to be authenticated to see this.'
+  });
+});
 
 passport.serializeUser(function (user, done) {
   done(null, user);
