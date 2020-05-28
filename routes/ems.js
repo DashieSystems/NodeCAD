@@ -8,7 +8,7 @@ const roleLink = 'http://mydl.city/app_metadata';
 router.get('/ems', secured(), function (req, res, next) {
   const { _raw, _json, ...userProfile } = req.user;
   if (userProfile){
-    if (userProfile.profile._json[roleLink].ems === true){
+    if (userProfile.profile._json[roleLink].authorization.roles.includes('EMS') === true){
       return res.render('ems', {userContent: 'You are EMS', title: 'NodeCAD | EMS MDT'});
     }else{
       return res.status(403).send({

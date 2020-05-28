@@ -8,7 +8,7 @@ const roleLink = 'http://mydl.city/app_metadata';
 router.get('/timesheet', secured(), function (req, res, next) {
   const { _raw, _json, ...userProfile } = req.user;
   if (userProfile){
-    if (userProfile.profile._json[roleLink].timesheet === true){
+    if (userProfile.profile._json[roleLink].authorization.roles.includes('Timesheet') === true){
       return res.render('timesheet', {userContent: 'You are allowed to view the timesheet', title: 'NodeCAD | Timesheet'});
     }else{
       return res.status(403).send({

@@ -2,63 +2,39 @@ extends layout
 
 
 block content
-    #wrapper.d-flex
-      // Sidebar
-      #sidebar-wrapper.bg-light.border-right
-        .sidebar-heading Dispatch and MDT 
-        .list-group.list-group-flush
-          a.list-group-item.list-group-item-action.bg-light(href='/') Home
-          a.list-group-item.list-group-item-action.bg-light(href='/dispatch') Dispatch
-          a.list-group-item.list-group-item-action.bg-light(href='/police') Police
-          a.list-group-item.list-group-item-action.bg-light(href='/ems') EMS
-          a.list-group-item.list-group-item-action.bg-light(href='/fire') Fire
-          a.list-group-item.list-group-item-action.bg-light(href='/timesheet') Timesheet
-          a.list-group-item.list-group-item-action.bg-light(href='/profile') Profile
-          a.list-group-item.list-group-item-action.bg-light(href='https://status.dashie.systems') Status
-        .custom-control.custom-switch
-          input#darkSwitch.custom-control-input(type='checkbox')
-          label.custom-control-label(for='darkSwitch') Dark Mode
-        script(src='/javascripts/dark-mode-switch.min.js', type='text/javascript')
-
-      #page-content-wrapper
-        nav.navbar.navbar-expand-lg.navbar-light.border-bottom
-          button#menu-toggle.btn.btn-primary Toggle Menu
-          button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-            span.navbar-toggler-icon
-          
-        .card-group
-          .card.justify-content-center.text-center
-            img.card-img-top(src='images/dp.png', alt='Flex Card Image 1')
-            .card-body
-              h4.card-title Dispatch
-              p.card-text
-                | Remember, you are required to utilize both monitors.
-              a.btn.btn-primary.text-center(href='/dispatch') Dispatch
-          .card.justify-content-center.text-center
-            img.card-img-top(src='images/fr.png', alt='Flex Card Image 2')
-            .card-body
-              h4.card-title Fire
-              p.card-text 
-                | Make sure you're keeping an ear out for tones and cats.
-              a.btn.btn-primary.text-center(href='/fire') Fire MDT
-          .card.justify-content-center.text-center
-            img.card-img-top(src='images/med.png', alt='Flex Card Image 3')
-            .card-body
-              h4.card-title EMS
-              p.card-text
-                | Ensure you're on duty and tracking your hours.
-              a.btn.btn-primary.text-center(href='/ems') EMS MDT
-          .card.justify-content-center.text-center
-            img.card-img-top(src='images/pd.png', alt='Flex Card Image 4')
-            .card-body
-              h4.card-title Police
-              p.card-text
-                | Please make sure you're storing your weapons after your shift.
-              a.btn.btn-primary.text-center(href='/police') Police MDT
-          .card.justify-content-center.text-center
-            img.card-img-top(src='images/ts.png', alt='Flex Card Image 5')
-            .card-body
-              h4.card-title Timeclock
-              p.card-text
-                | Track hours related to your department's staff.
-              a.btn.btn-primary.text-center(href='/timeclock') Timeclock
+  .card-group
+    .card.justify-content-center.text-center
+      img.card-img-top(src='images/dp.png', alt='Flex Card Image 1')
+      .card-body
+        h4.card-title Dispatch
+        p.card-text
+          | Remember, you are required to utilize both monitors.
+        a.btn.btn-primary.text-center(href='/dispatch') Dispatch
+    .card.justify-content-center.text-center
+      img.card-img-top(src='images/fr.png', alt='Flex Card Image 2')
+      .card-body
+        h4.card-title Fire
+        p.card-text 
+          | Make sure you're keeping an ear out for tones and cats.
+        a.btn.btn-primary.text-center(href='/fire') Fire MDT
+    .card.justify-content-center.text-center
+      img.card-img-top(src='images/med.png', alt='Flex Card Image 3')
+      .card-body
+        h4.card-title EMS
+        p.card-text
+          | Ensure you're on duty and tracking your hours.
+        a.btn.btn-primary.text-center(href='/ems') EMS MDT
+    .card.justify-content-center.text-center
+      img.card-img-top(src='images/pd.png', alt='Flex Card Image 4')
+      .card-body
+        h4.card-title Police
+        p.card-text
+          | Please make sure you're storing your weapons after your shift.
+        a.btn.btn-primary.text-center(href='/police') Police MDT
+    .card.justify-content-center.text-center
+      img.card-img-top(src='images/ts.png', alt='Flex Card Image 5')
+      .card-body
+        h4.card-title Timeclock
+        p.card-text
+          | Track hours related to your department's staff.
+        a.btn.btn-primary.text-center(href='/timesheet') Timeclock

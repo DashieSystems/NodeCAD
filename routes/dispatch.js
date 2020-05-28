@@ -8,7 +8,7 @@ const roleLink = 'http://mydl.city/app_metadata';
 router.get('/dispatch', secured(), function (req, res, next) {
   const { _raw, _json, ...userProfile } = req.user;
   if (userProfile){
-    if (userProfile.profile._json[roleLink].dispatch === true){
+    if (userProfile.profile._json[roleLink].authorization.roles.includes('Dispatch') === true){
       return res.render('dispatch', {userContent: 'You are Dispatch', title: 'NodeCAD | Dispatch Console'});
     }else{
       return res.status(403).send({

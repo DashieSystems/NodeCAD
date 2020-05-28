@@ -8,7 +8,7 @@ const roleLink = 'http://mydl.city/app_metadata';
 router.get('/fire', secured(), function (req, res, next) {
   const { _raw, _json, ...userProfile } = req.user;
   if (userProfile){
-    if (userProfile.profile._json[roleLink].fire === true){
+    if (userProfile.profile._json[roleLink].authorization.roles.includes('Fire') === true){
       return res.render('fire', {userContent: 'You are Fire', title: 'NodeCAD | Fire MDT'});
     }else{
       return res.status(403).send({
