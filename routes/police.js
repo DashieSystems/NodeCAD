@@ -8,7 +8,7 @@ const roleLink = 'http://mydl.city/app_metadata';
 router.get('/police', secured(), function (req, res, next) {
   const { _raw, _json, ...userProfile } = req.user;
   if (userProfile){
-    if (userProfile.profile._json[roleLink].police === true){
+    if (userProfile.profile._json[roleLink].authorization.roles.includes('Police') === true){
       return res.render('police', {userContent: 'You are Police', title: 'NodeCAD | Police MDT'});
     }else{
       return res.status(403).send({

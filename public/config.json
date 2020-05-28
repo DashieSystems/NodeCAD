@@ -1,0 +1,32 @@
+{
+    "debug": false,
+
+    "tileDirectory": "images/tiles",
+    "iconDirectory": "images/icons",
+    "showIdentifiers" : false,
+    "groupPlayers": true,
+
+    "defaults": {
+        "ip": "127.0.0.2",
+        "socketPort": 30121
+    },
+
+    "servers": {
+        "Testy Doo": {
+            "ip": "localhost",
+            "sockerPort": 30121
+        }
+    },
+    "maps" : [
+        {
+            "name": "Normal",
+            "url": "{tileDirectory}/normal/minimap_sea_{y}_{x}.png",
+            "minZoom": -2
+        },
+        {
+            "name": "Postal",
+            "url": "{tileDirectory}/postal/minimap_sea_{y}_{x}.png",
+            "minZoom": -5
+        }
+    ]
+}

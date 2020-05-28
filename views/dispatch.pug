@@ -1,27 +1,13 @@
 extends layout
 
-
 block content
-    #wrapper.d-flex
-      // Sidebar
-      #sidebar-wrapper.bg-light.border-right
-        .sidebar-heading Dispatch and MDT 
-        .list-group.list-group-flush
-          a.list-group-item.list-group-item-action.bg-light(href='/') Home
-          a.list-group-item.list-group-item-action.bg-light(href='/dispatch') Dispatch
-          a.list-group-item.list-group-item-action.bg-light(href='/police') Police
-          a.list-group-item.list-group-item-action.bg-light(href='/ems') EMS
-          a.list-group-item.list-group-item-action.bg-light(href='/fire') Fire
-          a.list-group-item.list-group-item-action.bg-light(href='/timesheet') Timesheet
-          a.list-group-item.list-group-item-action.bg-light(href='/profile') Profile
-          a.list-group-item.list-group-item-action.bg-light(href='https://status.dashie.systems') Status
-        .custom-control.custom-switch
-          input#darkSwitch.custom-control-input(type='checkbox')
-          label.custom-control-label(for='darkSwitch') Dark Mode
-        script(src='/javascripts/dark-mode-switch.min.js', type='text/javascript')
-
-      #page-content-wrapper
-        nav.navbar.navbar-expand-lg.navbar-light.border-bottom
-          button#menu-toggle.btn.btn-primary Toggle Menu
-          button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-            span.navbar-toggler-icon
+  div.container
+    .row
+      .col-lg-4
+        p 1
+    .row
+      .col-lg-4
+        p 2
+    .row
+      .col-lg-4
+        p 3
